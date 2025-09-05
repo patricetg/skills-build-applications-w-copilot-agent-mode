@@ -14,14 +14,19 @@ import djongo
 import corsheaders
 """
 
+
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
+if CODESPACE_NAME:
+    ALLOWED_HOSTS.append(f'{CODESPACE_NAME}-8000.app.github.dev')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-xyn=u!3e-kj+l(z)w&xr$=zodm6jvb+=!cj1bl#!$ol#(6xyg#'
@@ -29,7 +34,7 @@ SECRET_KEY = 'django-insecure-xyn=u!3e-kj+l(z)w&xr$=zodm6jvb+=!cj1bl#!$ol#(6xyg#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
